@@ -1,0 +1,127 @@
+.searchInnerDivWrapper{
+        
+    text-align: center;
+  
+}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 100%;
+        
+}
+.cardPadding{
+    padding: 8% 8% 12% 8%;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.searchContainer{
+    padding-top: 12%;
+}
+.col-search{
+    opacity: 0.9;
+}
+.searchField{
+    width: 80%;
+}
+.searchInput{
+    width: 100%;
+    height: 45px;
+    padding-left: 5px;
+}
+.searchFieldWrapper{
+    display: inline-flex;
+}
+.searchBtn{
+    margin-left: 15px;
+}
+.searchBtnA{
+    padding: 10px 18px;
+    background-color: red;
+    color: #ffffff;
+}
+.heading-p{
+        font-size: 21px;
+    font-weight: 600;
+    font-style: italic;
+    margin: 5px;
+}
+.searchBtnA:hover{
+    text-decoration: none;
+    color: #000000;
+    background-color: #ffffff;
+    border: 1px solid;
+}
+.logo-background{
+    background:
+  linear-gradient(
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5)
+  ),
+  url(https://media.giphy.com/media/PIh4laWJlz9bq/giphy.gif);
+    text-align: center;
+    background-size: cover;
+}
+.header-wrapper{
+    display: inline-flex;
+}
+.heading-p-header{
+        color: #ffffff;
+    font-size: 21px;
+    padding-top: 10%;
+    padding-left: 20px;
+    font-weight: 700;
+}
+.header-logo-img{
+        width: 80px;
+}
+.tabs-wrapper-forecast{
+        padding: 5% 6%;
+}
+.nav-tabs .nav-link{
+    color: #000000;
+}
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{
+        border-top: 1px solid red;
+}
+.dailyBlackP{
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    color: #000000;
+    margin: 2px;
+}
+.dailyValueP{
+    color: #878787;
+    font-weight: 400;
+    font-size: 14px;
+    white-space: nowrap;
+}
+.weather-icon{
+    width: 45px;
+}
+.celsius-P{
+        font-size: 30px;
+    line-height: 1;
+    white-space: nowrap;
+    font-weight: 300;
+    color: #000000;
+    margin: 2px;
+}
+.cloudy-font{
+        font-size: 16px;
+    margin-right: 12px;
+    word-break: break-all;
+    text-align: end;
+    color: #000000;
+    margin: 2px;
+}
+.precipe-p{
+         font-size: 16px;
+    margin-right: 12px;
+    word-break: break-all;
+    text-align: end;
+    color: #878787;
+    margin: 2px;
+}
