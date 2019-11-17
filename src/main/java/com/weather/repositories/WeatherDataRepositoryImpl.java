@@ -13,6 +13,7 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 
 import java.time.LocalDate;
+import java.util.List;
 
 
 public class WeatherDataRepositoryImpl implements WeatherDataRepositoryCustom {
@@ -25,13 +26,26 @@ public class WeatherDataRepositoryImpl implements WeatherDataRepositoryCustom {
      * @param day
      * @param latitude
      * @param longitude
-     * @return
+     * @return Weather
      */
     @Override
     public Weather findByDateLocation(String day, double latitude, double longitude) {
         Query query = new Query();
         query.addCriteria(Criteria.where("day").is(day).and("latitude").is(latitude).and("longitude").is(longitude));
         Weather weather = mongoTemplate.findOne(query, Weather.class);
+        return weather;
+    }
+
+    /**
+     * Query for Weather data which is older than given day
+     * @param day
+     * @return Weather list
+     */
+    @Override
+    public List<Weather> FindThreeDaysExpiredData(String day){
+        Query query = new Query();
+        query.addCriteria(Criteria.where("day").lt(day));
+        List<Weather> weather = mongoTemplate.find(query,Weather.class);
         return weather;
     }
 }

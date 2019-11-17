@@ -21,6 +21,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
       <MavenImportingSettings>
@@ -30,7 +33,7 @@
   </component>
   <component name="ProjectId" id="1TVUexklp82kK3s5z7ajFtuyQzX" />
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/IdeaProjects/weather-today" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -38,8 +41,12 @@
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.weather.Entity" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\thili\IdeaProjects\weatherFinder\src\main\resources\static\css" />
+      <recent name="C:\Users\thili\IdeaProjects\weatherFinder\src\main\resources\static\img" />
+      <recent name="C:\Users\thili\IdeaProjects\weatherFinder\src\main\resources\templates" />
+      <recent name="C:\Users\thili\IdeaProjects\weatherFinder\src\main\java\com\weather" />
+      <recent name="C:\Users\thili\IdeaProjects\weatherFinder\src\main\resources\static" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\thili\IdeaProjects\weatherFinder\src\main\java\com\weather\Entity" />
@@ -49,14 +56,11 @@
       <recent name="C:\Users\thili\IdeaProjects\weatherFinder\src\main\java\com\weather" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.weather.schedule" />
       <recent name="com.weather.Aspect" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\thili\IdeaProjects\weatherFinder\src\main\resources\static\css" />
-      <recent name="C:\Users\thili\IdeaProjects\weatherFinder\src\main\resources\static\img" />
-      <recent name="C:\Users\thili\IdeaProjects\weatherFinder\src\main\resources\templates" />
-      <recent name="C:\Users\thili\IdeaProjects\weatherFinder\src\main\java\com\weather" />
-      <recent name="C:\Users\thili\IdeaProjects\weatherFinder\src\main\resources\static" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.weather.Entity" />
     </key>
   </component>
   <component name="RunDashboard">

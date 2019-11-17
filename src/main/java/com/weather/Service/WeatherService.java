@@ -14,6 +14,7 @@ import com.weather.repositories.WeatherDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
@@ -84,6 +85,9 @@ public class WeatherService {
      * @return
      */
     public void deleteData() {
-        //TODO: Implement the logic
+        LocalDate currentdate = LocalDate.now();
+        String currentDay = new Integer(currentdate.getDayOfMonth()).toString();
+        List<Weather> expiredData = weatherDataRepository.FindThreeDaysExpiredData(currentDay);
+        weatherDataRepository.deleteAll(expiredData);
     }
 }

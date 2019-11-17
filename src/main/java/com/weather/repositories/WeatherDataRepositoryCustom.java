@@ -8,7 +8,11 @@ package com.weather.repositories;
 
 import com.weather.Entity.Weather;
 
+import java.util.List;
+
 public interface WeatherDataRepositoryCustom {
 
     Weather findByDateLocation(String day, double latitude, double longitude);
+
+    List<Weather> FindThreeDaysExpiredData(String day);
 }
