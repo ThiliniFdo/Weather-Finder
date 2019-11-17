@@ -14,11 +14,11 @@ import com.weather.repositories.WeatherDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 @Service
-public class WeatherService{
+public class WeatherService {
 
     @Autowired
     private WeatherDataRepository weatherDataRepository;
@@ -29,23 +29,27 @@ public class WeatherService{
     @Autowired
     private HourlyWeatherService hourlyWeatherService;
 
+    @Autowired
+    private DateFormatter dateFormatter;
+
     /**
      * To get the  weather data
      *
      * @param city
      * @return Weather
      */
-    public Weather getData(City city){
-        if(city == null){
+    public Weather getData(City city) {
+        if (city == null) {
             //TODO: Handle exceptions
             return null;
         }
-        LocalDate date = LocalDate.now();
+        String day = dateFormatter.getUtcDay(city.getRequestEpoach());
         double latitude = city.getLatitude();
         double longitude = city.getLongitude();
-        Weather weather = weatherDataRepository.findByDateLocation(date,latitude,longitude);
-        if(weather == null){
-            weather = darkskyService.getDarkskyData(latitude,longitude);
+        Weather weather = weatherDataRepository.findByDateLocation(day, latitude, longitude);
+        if (weather == null) {
+            weather = darkskyService.getDarkskyData(latitude, longitude);
+            weather.setDay(dateFormatter.getUtcDay(weather.getCurrently().getTime()));
             weather.setLatitude(latitude);
             weather.setLongitude(longitude);
             saveData(weather);
@@ -59,7 +63,7 @@ public class WeatherService{
      * @param weather
      * @return
      */
-    public void saveData(Weather weather){
+    public void saveData(Weather weather) {
         weatherDataRepository.save(weather);
     }
 
@@ -69,18 +73,8 @@ public class WeatherService{
      * @param weather
      * @return List of Weather
      */
-    public List<WeatherData> getToday(Weather weather) {
-        return hourlyWeatherService.getTodayData(weather.getHourly().getData());
-    }
-
-    /**
-     * Get tomorrow weather data
-     *
-     * @param weather
-     * @return List of Weather
-     */
-    public List<WeatherData> getTomorrow(Weather weather) {
-        return hourlyWeatherService.getTomorrowData(weather.getHourly().getData());
+    public Map<String, List<WeatherData>> getWeatherData(Weather weather, City city) {
+        return hourlyWeatherService.getWeatherData(weather.getHourly().getData(), city);
     }
 
     /**
@@ -89,7 +83,7 @@ public class WeatherService{
      * @param
      * @return
      */
-    public void deleteData(){
+    public void deleteData() {
         //TODO: Implement the logic
     }
 }

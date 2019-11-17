@@ -32,9 +32,13 @@ public class CityService {
      * @return City
      */
     public City getCity(City cityParam) {
+        City returnCity;
         for (City city : cities) {
             if (city.getTitle().equals(cityParam.getTitle())) {
-                return city;
+                returnCity = city;
+                returnCity.setRequestEpoach(cityParam.getRequestEpoach());
+                returnCity.setTimeZone(cityParam.getTimeZone());
+                return returnCity;
             }
         }
         return null;

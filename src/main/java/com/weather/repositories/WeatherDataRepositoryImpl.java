@@ -22,15 +22,15 @@ public class WeatherDataRepositoryImpl implements WeatherDataRepositoryCustom {
 
     /**
      * Query the db based on Date and location
-     * @param date
+     * @param day
      * @param latitude
      * @param longitude
      * @return
      */
     @Override
-    public Weather findByDateLocation(LocalDate date, double latitude, double longitude) {
+    public Weather findByDateLocation(String day, double latitude, double longitude) {
         Query query = new Query();
-        query.addCriteria(Criteria.where("date").is(date).and("latitude").is(latitude).and("longitude").is(longitude));
+        query.addCriteria(Criteria.where("day").is(day).and("latitude").is(latitude).and("longitude").is(longitude));
         Weather weather = mongoTemplate.findOne(query, Weather.class);
         return weather;
     }

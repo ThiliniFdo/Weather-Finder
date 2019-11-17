@@ -10,17 +10,18 @@ package com.weather.Entity;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.LocalDate;
+import javax.validation.constraints.NotEmpty;
 
 @Document(collection = "weather")
 public class Weather {
 
     @Id
     private String id;
-    private LocalDate date = LocalDate.now();
+    private String day;
     private double latitude;
     private double longitude;
     private String timezone;
+    private CurrentlyWeather currently;
     private HourlyWeather hourly;
 
     public String getId() {
@@ -31,12 +32,12 @@ public class Weather {
         this.id = id;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public String getDay() {
+        return day;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setDay(String day) {
+        this.day = day;
     }
 
     public double getLatitude() {
@@ -62,6 +63,10 @@ public class Weather {
     public void setTimezone(String timezone) {
         this.timezone = timezone;
     }
+
+    public CurrentlyWeather getCurrently() { return currently; }
+
+    public void setCurrently(CurrentlyWeather currently) { this.currently = currently; }
 
     public HourlyWeather getHourly() {
         return hourly;

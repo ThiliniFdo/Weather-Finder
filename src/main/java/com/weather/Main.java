@@ -1,9 +1,3 @@
-/**
- * Main class for run the spring boot
- *
- * @version 1.0
- * @author Thilini Fernando
- */
 package com.weather;
 
 import org.springframework.boot.SpringApplication;
