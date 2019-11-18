@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" layout:decorate="~{layouts/layout}"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<body>
+<h1>Error Page</h1>
+
+<p th:if="${url}">
+
+    <b>Page:</b> <a th:href="@{/weather}"> <span th:text="${url}">Page URL</span></a>
+
+</p>
+
+<div th:if="${ex} or ${exception} or (${message} and ${message.length() != 0})">
+    <b>Cause:</b> <span th:if="${ex}" th:text="${ex}">exception ...</span>
+    <span th:if="${exception}" th:text="${exception}">exception ...</span>
+    <span th:if="${message} and ${message.length() != 0}"
+          th:text="${message}">message ...</span>
+</div>
+
+<p
+        th:unless="${ex} or ${exception} or (${message} and ${message.length() != 0})">
+    Cause unknown (no exception details available)</p>
+
+
+</body>
+</html>

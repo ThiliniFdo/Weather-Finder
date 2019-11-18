@@ -40,10 +40,6 @@ public class WeatherService {
      * @return Weather
      */
     public Weather getData(City city) {
-        if (city == null) {
-            //TODO: Handle exceptions
-            return null;
-        }
         String day = dateFormatter.getUtcDay(city.getRequestEpoach());
         double latitude = city.getLatitude();
         double longitude = city.getLongitude();

@@ -10,8 +10,6 @@ package com.weather.Entity;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.validation.constraints.NotEmpty;
-
 @Document(collection = "weather")
 public class Weather {
 
@@ -64,9 +62,13 @@ public class Weather {
         this.timezone = timezone;
     }
 
-    public CurrentlyWeather getCurrently() { return currently; }
+    public CurrentlyWeather getCurrently() {
+        return currently;
+    }
 
-    public void setCurrently(CurrentlyWeather currently) { this.currently = currently; }
+    public void setCurrently(CurrentlyWeather currently) {
+        this.currently = currently;
+    }
 
     public HourlyWeather getHourly() {
         return hourly;

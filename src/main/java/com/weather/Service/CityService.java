@@ -32,6 +32,7 @@ public class CityService {
      * @return City
      */
     public City getCity(City cityParam) {
+        if(cityParam.getTitle() == ""){}
         City returnCity;
         for (City city : cities) {
             if (city.getTitle().equals(cityParam.getTitle())) {

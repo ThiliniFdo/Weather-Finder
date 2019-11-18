@@ -36,6 +36,7 @@
 </style>
 
 <body>
+
 <form action="#" method="post" th:action="@{/weather}" th:object="${city}">
 
     <div class="container-fluid searchContainer">
@@ -50,7 +51,7 @@
                         </div>
                         <div class="searchFieldWrapper" th:with="test = 10">
                             <div class="searchField">
-                                <input class="searchInput" list="brow" placeholder="Please select a City"
+                                <input  class="searchInput" list="brow" placeholder="Please select a City"
                                        th:field="*{title}"/>
                                 <datalist id="brow">
                                     <option th:each="city: ${cities}" th:value="${city.title}">

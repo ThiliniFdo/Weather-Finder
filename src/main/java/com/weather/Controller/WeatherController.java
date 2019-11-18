@@ -10,11 +10,13 @@ package com.weather.Controller;
 import com.weather.Entity.City;
 import com.weather.Entity.Weather;
 import com.weather.Entity.WeatherData;
+import com.weather.Error.CityNotFoundException;
 import com.weather.Service.CityService;
 import com.weather.Service.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,6 +36,7 @@ public class WeatherController {
 
     /**
      * GET request for home page
+     *
      * @param model
      * @return home view
      */
@@ -46,19 +49,25 @@ public class WeatherController {
 
     /**
      * POST request for home page submission
+     *
      * @param model
      * @param city
      * @return weather view
      */
     @PostMapping("/weather")
-    public String submitWeather(Model model, @ModelAttribute City city) {
-        Weather weather = weatherService.getData(cityService.getCity(city));
-        if (weather != null) {
-            Map<String, List<WeatherData>> weatherData = weatherService.getWeatherData(weather,city);
-            model.addAttribute("today",weatherData.get("today"));
-            model.addAttribute("tomorrow",weatherData.get("tomorrow"));
+    public String submitWeather(Model model, @ModelAttribute City city, BindingResult bindingResult) {
+        if (city.getTitle() == "" || city.getTitle() == null) {
+            throw new CityNotFoundException();
+        }
+        City newCity = cityService.getCity(city);
+        if (newCity == null) {
+            throw new CityNotFoundException();
+        } else {
+            Weather weather = weatherService.getData(cityService.getCity(city));
+            Map<String, List<WeatherData>> weatherData = weatherService.getWeatherData(weather, city);
+            model.addAttribute("today", weatherData.get("today"));
+            model.addAttribute("tomorrow", weatherData.get("tomorrow"));
         }
         return "weather";
     }
-
 }

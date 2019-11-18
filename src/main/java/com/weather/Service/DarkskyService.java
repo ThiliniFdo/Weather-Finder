@@ -7,6 +7,7 @@
 package com.weather.Service;
 
 import com.weather.Entity.Weather;
+import com.weather.Error.DarkSkyRespondException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -14,6 +15,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
@@ -36,6 +38,11 @@ public class DarkskyService {
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
         HttpEntity<String> entity = new HttpEntity<>(headers);
-        return restTemplate.exchange("https://api.darksky.net/forecast/" + key + "/" + latitude + "," + longitude, HttpMethod.GET, entity, Weather.class).getBody();
+        try{
+            Weather weather = restTemplate.exchange("https://api.darksky.net/forecast/" + key + "/" + latitude + "," + longitude, HttpMethod.GET, entity, Weather.class).getBody();
+            return weather;
+        }catch (RestClientException e){
+            throw new DarkSkyRespondException();
+        }
     }
 }
